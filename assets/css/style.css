@@ -1,0 +1,14 @@
+body{ 
+    background-image: url(https://halfgameback.files.wordpress.com/2014/04/wm30_photo_289.jpg);
+	text-align: center;
+}
+
+.text-muted{
+	color: red;
+}
+.last-seconds{
+  color: red;
+}
+.option{
+  margin: 15px;
+}
