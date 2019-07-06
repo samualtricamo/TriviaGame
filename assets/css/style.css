@@ -12,3 +12,11 @@ body{
 .option{
   margin: 15px;
 }
+
+#choices {
+  text-align: center;
+
+}
+#start {
+  text-align: center;
+}
