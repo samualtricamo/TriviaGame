@@ -108,4 +108,63 @@ $(document).ready(function(){
         $('#results').html('<h3>Out of time! The answer was '+ Object.values(trivia.answers)[trivia.currentSet] +'</h3>');
       }
    
+      else if(trivia.currentSet === Object.keys(trivia.questions).length){
+        
+     
+        $('#results')
+          .html('<h3>Thank you for playing!</h3>'+
+          '<p>Correct: '+ trivia.correct +'</p>'+
+          '<p>Incorrect: '+ trivia.incorrect +'</p>'+
+          '<p>Unaswered: '+ trivia.unanswered +'</p>'+
+          '<p>Please play again!</p>');
+        
+        $('#game').hide();
+        
+        $('#start').show();
+      }
+      
+    },
+
+    guessChecker : function() {
+      
+      var resultId;
+      
+      var currentAnswer = Object.values(trivia.answers)[trivia.currentSet];
+      
+      if($(this).text() === currentAnswer){
+        // turn button green for correct
+        $(this).addClass('btn-success').removeClass('btn-info');
+        
+        trivia.correct++;
+        clearInterval(trivia.timerId);
+        resultId = setTimeout(trivia.guessResult, 1000);
+        $('#results').html('<h3>Correct Answer!</h3>');
+      }
+
+      else{
+
+        $(this).addClass('btn-danger').removeClass('btn-info');
+        
+        trivia.incorrect++;
+        clearInterval(trivia.timerId);
+        resultId = setTimeout(trivia.guessResult, 1000);
+        $('#results').html('<h3>Better luck next time! '+ currentAnswer +'</h3>');
+      }
+      
+    },
+
+    guessResult : function(){
+      
+ 
+      trivia.currentSet++;
+      
+   
+      $('.option').remove();
+      $('#results h3').remove();
+      
+  
+      trivia.nextQuestion();
+       
     }
+  
+  }
