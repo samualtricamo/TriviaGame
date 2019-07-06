@@ -132,7 +132,6 @@ $(document).ready(function(){
       var currentAnswer = Object.values(trivia.answers)[trivia.currentSet];
       
       if($(this).text() === currentAnswer){
-        // turn button green for correct
         $(this).addClass('btn-success').removeClass('btn-info');
         
         trivia.correct++;
